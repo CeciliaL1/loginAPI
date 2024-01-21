@@ -18,18 +18,12 @@ router.post("/", (req,res) => {
    
        userInfo = userInfo.find(user => user.email == checkEmail && user.password == checkPassword);
        
-       const user = {
-        id: userInfo.id,
-        name: userInfo.name
-       }
-
        if(userInfo){
-            res.json(user)
+            res.json({"user": userInfo.name, "id": userInfo.id})
         } else {
             res.status(401).json({message: "fel inlogg"});
         }
    
-         res.json(userInfo);
        }) 
 })
 

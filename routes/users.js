@@ -11,7 +11,27 @@ router.get("/", (req, res) =>{
     res.json(users);
 });          
 
-router.post('/', (req, res) => {
+router.post('/check', (req, res) => {
+  fs.readFile('usersInfo.json', function(err, data){
+    if(err){
+      console.log(err)
+    }
+
+    let userInfo = JSON.parse(data);
+ 
+  userInfo = userInfo.find(user => req.body.email === user.email);
+ if(userInfo){
+  res.json(true)
+ } else {
+  res.json(false)
+ }
+  })
+
+})
+
+
+
+router.post('/add', (req, res) => {
 
     fs.readFile('usersInfo.json', function(err,data){
      if(err){

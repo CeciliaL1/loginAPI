@@ -4,5 +4,44 @@
     "name": "Cecilia",
     "email": "cissi@mail.com",
     "password": "test"
+  },
+  {
+    "id": 2,
+    "name": "ddd",
+    "email": "ddd@hotmail.com",
+    "password": "dddd"
+  },
+  {
+    "id": 3,
+    "name": "ss",
+    "email": "ss@gg.com",
+    "password": "edee"
+  },
+  {
+    "id": 4,
+    "name": "ss",
+    "email": "ss@gg.com",
+    "password": "edee"
+  },
+  {
+    "id": 5,
+    "name": "dd",
+    "email": "ss@gg.com",
+    "password": "ddd"
+  },
+  {
+    "id": 6
+  },
+  {
+    "id": 7,
+    "name": "",
+    "email": "hej@hej.com",
+    "password": ""
+  },
+  {
+    "id": 8,
+    "name": "Fredrik",
+    "email": "fredrik.ovnell@hotmail.com",
+    "password": "hejsan"
   }
 ]

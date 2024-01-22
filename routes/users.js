@@ -26,7 +26,6 @@ router.post('/check', (req, res) => {
   res.json(false)
  }
   })
-
 })
 
 
@@ -71,7 +70,15 @@ router.delete("/:id", (req,res) =>{
    
          userInfo = userInfo.filter(user => user.id != id)
         
-         // forEach id after deleted id , -1 
+         
+          userInfo.forEach(userId => {
+            if(userId.id > id ){
+              userId.id = userId.id -1;
+            }
+           
+          })
+          
+        
        fs.writeFile('usersInfo.json', JSON.stringify(userInfo,null, 2), function(err){
            if (err){
              console.log(err)

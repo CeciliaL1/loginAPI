@@ -19,7 +19,7 @@ router.post("/", (req,res) => {
        userInfo = userInfo.find(user => user.email == checkEmail && user.password == checkPassword);
        
        if(userInfo){
-            res.json({"user": userInfo.name, "id": userInfo.id})
+            res.json({"user": userInfo.name, "id": userInfo.id, "email": userInfo.email})
         } else {
             res.status(401).json({message: "fel inlogg"});
         }

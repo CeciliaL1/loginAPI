@@ -54,8 +54,9 @@ router.post('/add', (req, res) => {
           console.log(err)
         }
       });
-      res.json(userInfo);
+      res.json({"user": req.body.name, "email": req.body.email});
     })  
+ 
 })
 
 // delete user 

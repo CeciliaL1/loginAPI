@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 let fs = require('fs');
 const cors = require('cors');
-
+let { randomUUID } = require('crypto');
 
 router.use(cors());
 
@@ -20,11 +20,11 @@ router.post('/check', (req, res) => {
     let userInfo = JSON.parse(data);
  
   userInfo = userInfo.find(user => req.body.email === user.email);
- if(userInfo){
-  res.json(true)
- } else {
-  res.json(false)
- }
+    if(userInfo){
+      res.json(true)
+    } else {
+      res.json(false)
+    }
   })
 })
 
@@ -41,7 +41,7 @@ router.post('/add', (req, res) => {
 
      // Create new user and add to userInfo
      let user = {
-        id: userInfo.length +1,
+        id: randomUUID(),
         name: req.body.name,
         email: req.body.email,
         password: req.body.password
@@ -69,14 +69,7 @@ router.delete("/:id", (req,res) =>{
        let userInfo = JSON.parse(data);
    
          userInfo = userInfo.filter(user => user.id != id)
-        
-         
-          userInfo.forEach(userId => {
-            if(userId.id > id ){
-              userId.id = userId.id -1;
-            }
-           
-          })
+
           
         
        fs.writeFile('usersInfo.json', JSON.stringify(userInfo,null, 2), function(err){

@@ -1,38 +1,14 @@
 [
   {
-    "id": 1,
-    "name": "då",
-    "email": "då@mail.com",
-    "password": "då"
-  },
-  {
-    "id": 2,
+    "id": "38eb40f4-1290-4ecb-92fd-690f8504a0a4",
     "name": "cissi",
     "email": "cissi@mail.com",
     "password": "cissi"
   },
   {
-    "id": 3,
-    "name": "12",
-    "email": "12@22.com",
-    "password": "12"
-  },
-  {
-    "id": 4,
-    "name": "122",
-    "email": "122@22.com",
-    "password": "12"
-  },
-  {
-    "id": 5,
-    "name": "122",
-    "email": "1222@22.com",
-    "password": "12"
-  },
-  {
-    "id": 6,
-    "name": "122",
-    "email": "13222@22.com",
-    "password": "12"
+    "id": "30cd0040-39e2-477a-bdf8-30153af158f1",
+    "name": "fredde",
+    "email": "fredde@mail.com",
+    "password": "fredde"
   }
 ]

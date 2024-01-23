@@ -38,14 +38,14 @@ router.post('/add', (req, res) => {
         console.log(err)
 
         if(err.code == 'ENOENT'){
-          let user = {
+          let userInfo = {
             id: randomUUID(),
             name: req.body.name,
             email: req.body.email,
             password: req.body.password
         }
 
-        fs.writeFile('usersInfo.json', JSON.stringify(user,null, 2), function(err){
+        fs.writeFile('usersInfo.json', JSON.stringify(userInfo,null, 2), function(err){
           if (err){
             console.log(err)
           }

@@ -4,6 +4,7 @@ let fs = require('fs');
 const cors = require('cors');
 let { randomUUID } = require('crypto');
 
+let cryptoJS = require('crypto-js')
 router.use(cors());
 
 
@@ -58,12 +59,17 @@ router.post('/add', (req, res) => {
      const userInfo = JSON.parse(data);
 
      // Create new user and add to userInfo
-     let user = {
-        id: randomUUID(),
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password
-    }
+   
+     let userPassword = req.body.password;
+     let cryptoPassWord = cryptoJS.AES.encrypt(userPassword, 'Salt nyckel').toString();
+     console.log(cryptoPassWord)
+
+       let user= {
+         id: randomUUID(),
+         name: req.body.name,
+         email: req.body.email,
+         password: cryptoPassWord
+     }
 
     userInfo.push(user)
     

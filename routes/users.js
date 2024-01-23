@@ -15,6 +15,7 @@ router.post('/check', (req, res) => {
   fs.readFile('usersInfo.json', function(err, data){
     if(err){
       console.log(err)
+      
     }
 
     let userInfo = JSON.parse(data);
@@ -35,6 +36,23 @@ router.post('/add', (req, res) => {
     fs.readFile('usersInfo.json', function(err,data){
      if(err){
         console.log(err)
+
+        if(err.code == 'ENOENT'){
+          let user = {
+            id: randomUUID(),
+            name: req.body.name,
+            email: req.body.email,
+            password: req.body.password
+        }
+
+        fs.writeFile('usersInfo.json', JSON.stringify(user,null, 2), function(err){
+          if (err){
+            console.log(err)
+          }
+        });
+
+        res.status('404 - filen hittades inte, ny fil skapad och använadren lades till')
+        }
      }
 
      const userInfo = JSON.parse(data);

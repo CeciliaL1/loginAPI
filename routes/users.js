@@ -62,8 +62,11 @@ router.post('/add', (req, res) => {
    
      let userPassword = req.body.password;
      let cryptoPassWord = cryptoJS.AES.encrypt(userPassword, 'Salt nyckel').toString();
-     console.log(cryptoPassWord)
 
+
+/* Decrypt password
+     let originalPassword = cryptoJS.AES.decrypt(userPassword, 'Salt nyckel').toString(cryptoJS.enc.Utf8);
+*/
        let user= {
          id: randomUUID(),
          name: req.body.name,

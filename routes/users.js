@@ -3,14 +3,26 @@ var router = express.Router();
 let fs = require('fs');
 const cors = require('cors');
 let { randomUUID } = require('crypto');
+let cryptoJS = require('crypto-js');
 
-let cryptoJS = require('crypto-js')
+
+let multer = require('multer'); // enctype="multipert/form-data"
+
+let storage = multer.diskStorage({
+    destination: function(req, file, cb){
+        cb(null,"public/upload");
+    },
+    filename: function(req, file, cb){
+        cb(null, file.originalname);
+    }
+    
+})
+
+const upload =  multer({storage}); // upload.single=""   / src="/upload/${req.file.filename}"
+
+
 router.use(cors());
-
-
-router.get("/", (req, res) =>{
-    res.json(users);
-});          
+       
 
 router.post('/check', (req, res) => {
   fs.readFile('usersInfo.json', function(err, data){
@@ -30,7 +42,26 @@ router.post('/check', (req, res) => {
   })
 })
 
+router.post('/image', upload.single("image"), (req,res) => {
+  const userImage = req.file.filename;
+  console.log(req.body)
 
+  fs.readFile('usersInfo.json', (err, data) => {
+    if(err){
+      console.log(err)
+    }
+
+    const userInfo = JSON.parse(data);
+
+    const addImage = {
+      "imageSrc": userImage
+    }
+
+
+  })
+
+
+})
 
 router.post('/add', (req, res) => {
 
@@ -61,12 +92,9 @@ router.post('/add', (req, res) => {
      // Create new user and add to userInfo
    
      let userPassword = req.body.password;
-     let cryptoPassWord = cryptoJS.AES.encrypt(userPassword, 'Salt nyckel').toString();
+     let cryptoPassWord = cryptoJS.HmacSHA256(userPassword, 'Salt nyckel').toString();
 
 
-/* Decrypt password
-     let originalPassword = cryptoJS.AES.decrypt(userPassword, 'Salt nyckel').toString(cryptoJS.enc.Utf8);
-*/
        let user= {
          id: randomUUID(),
          name: req.body.name,

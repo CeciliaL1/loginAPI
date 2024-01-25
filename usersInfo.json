@@ -1,8 +1,9 @@
 [
   {
-    "id": "75dd6ae7-c39f-44b4-ae5d-dd833a07d23d",
+    "id": "e2bc9818-653a-457e-a9aa-5e3e5ff36eda",
     "name": "cissi",
     "email": "cissi@mail.com",
-    "password": "3a8ba06d2cac05589673070e1ed83607541c8c2dcb41c6b907924e92c126cd93"
+    "password": "3a8ba06d2cac05589673070e1ed83607541c8c2dcb41c6b907924e92c126cd93",
+    "userImage": false
   }
 ]

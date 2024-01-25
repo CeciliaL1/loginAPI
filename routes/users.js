@@ -9,6 +9,7 @@ let cryptoJS = require('crypto-js');
 let multer = require('multer'); 
 
 
+
 let storage = multer.diskStorage({
     destination: function(req, file, cb){
         cb(null,"public/upload/userimage");
@@ -43,10 +44,11 @@ router.post('/check', (req, res) => {
 })
 
 // add image to user
-router.post('/image', upload.single("image"), (req,res) => {
-
+router.post('/image/:id', upload.single("image"), (req,res) => {
+  console.log(req.file)
+  console.log(req.params.id)
 res.json('ok')
-console.log(req.body)
+
 
 })
 

@@ -26,7 +26,7 @@ router.post("/", (req,res) => {
 
        
        if(userInfo){
-            res.json({"user": userInfo.name, "id": userInfo.id, "email": userInfo.email})
+            res.json({"user": userInfo.name, "id": userInfo.id, "email": userInfo.email, userImage: userInfo.userImage })
         } else {
             res.status(401).json({message: "fel inlogg"});
         }

@@ -4,6 +4,13 @@
     "name": "cicci",
     "email": "cissi@mail.com",
     "password": "3a8ba06d2cac05589673070e1ed83607541c8c2dcb41c6b907924e92c126cd93",
+    "userImage": true
+  },
+  {
+    "id": "30492ddb-e88d-4a49-887f-33cbf6c743df",
+    "name": "fredd",
+    "email": "fredde@mail.com",
+    "password": "4ad483be00361d06b729d1423fd819754bb85d522c17c2de783cb28088d41f15",
     "userImage": false
   }
 ]

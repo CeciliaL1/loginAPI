@@ -11,13 +11,16 @@ let multer = require('multer');
 
 
 let storage = multer.diskStorage({
-    destination: function(req, file, cb){
-        cb(null,"public/upload/userimage");
-    },
+  destination: function(req, file, cb){
+      cb(null,"public/upload/userimage");
+  },
     filename: function(req, file, cb){
-        cb(null, file.originalname);
-    }
-})
+      let fileName = file.originalname;
+      file.filename = fileName.replace(/.*(?=\.)/, req.params.id)
+      cb(null, file.filename);
+  }
+  })
+
 
 const upload =  multer({storage}); 
 
@@ -45,9 +48,27 @@ router.post('/check', (req, res) => {
 
 // add image to user
 router.post('/image/:id', upload.single("image"), (req,res) => {
-  console.log(req.file)
-  console.log(req.params.id)
-res.json('ok')
+
+  fs.readFile('usersInfo.json', (err,data) => {
+    if (err) console.log(err);
+
+    const userInfo = JSON.parse(data)
+    
+    user = userInfo.find(user => user.id == req.params.id);
+    user.userImage = true
+   
+    
+    fs.writeFile('userInfo.json', JSON.stringify(userInfo,null, 2), (err) => {
+      if(err) console.log(err)
+    })
+    let sendUser = {
+      id: user.id,
+      userImage: user.userImage
+    }
+    res.json(sendUser)
+    console.log('Logged in user:', user)
+  })
+ 
 
 
 })
